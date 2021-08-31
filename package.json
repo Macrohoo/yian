@@ -1,0 +1,35 @@
+{
+  "name": "yian",
+  "version": "1.0.8",
+  "description": "Vue Project Entrance",
+  "main": "dist/yian",
+  "scripts": {
+    "build": "webpack --config build/webpack.config.js",
+    "lint": "eslint --fix --ext .js,.vue src"
+  },
+  "author": "Marhoo",
+  "license": "ISC",
+  "peerDependencies": {
+    "axios": ">=0.18.1",
+    "element-ui": ">=2.13.2",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-vue": "^7.17.0",
+    "sass": "^1.38.2",
+    "sass-loader": "^12.1.0",
+    "vue-loader": "^15.9.8",
+    "vue-style-loader": "^4.1.3",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0"
+  }
+}
