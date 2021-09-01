@@ -180,6 +180,7 @@ import order from '@/views/order/index.js';
 
 Vue.use(order);
 ```
+
 ## 🔨 Usage Icon 组件
 
 > - icon 目录参考目录建议
@@ -200,3 +201,9 @@ requireAll(req);
 <svg-icon icon-class="shouye" />
 <svg-icon icon-class="https://panjiachen.github.io/vue-element-admin-site/home.png" />
 ```
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
+
+Copyright (c) 2021-present, Marhoo
