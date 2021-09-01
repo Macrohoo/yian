@@ -1,5 +1,6 @@
 const path = require("path");
 const { VueLoaderPlugin } = require('vue-loader')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
   optimization: {
@@ -68,6 +69,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ProgressBarPlugin()
   ]  
 };

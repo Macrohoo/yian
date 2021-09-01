@@ -67,12 +67,12 @@ export default {
 
 | Utils 方法                       | 用法及介绍                            |
 | -------------------------------- | ------------------------------------- |
-| deepClone 深拷贝                 | this.\$yian.Utils.deepClone(obj)      |
-| copyData Vue 源码深拷贝(推荐)    | this.\$yian.Utils.copyData(obj)       |
-| unique 字符串、数组去重          | this.\$yian.Utils.unique(params)      |
-| mobileCheck 手机号检验           | this.\$yian.Utils.mobileCheck(mobile) |
-| unixDate Unix 时间戳转化日期时间 | this.\$yian.Utils.unixDate(Unixtime)  |
-| isExternal 是否为外链            | this.\$yian.Utils.isExternal(link)    |
+| deepClone 深拷贝                 | this.\$yian.utils.deepClone(obj)      |
+| copyData Vue 源码深拷贝(推荐)    | this.\$yian.utils.copyData(obj)       |
+| unique 字符串、数组去重          | this.\$yian.utils.unique(params)      |
+| mobileCheck 手机号检验           | this.\$yian.utils.mobileCheck(mobile) |
+| unixDate Unix 时间戳转化日期时间 | this.\$yian.utils.unixDate(Unixtime)  |
+| isExternal 是否为外链            | this.\$yian.utils.isExternal(link)    |
 
 ## 🔨 Usage v-popup 指令打开 el-dialog 弹窗
 
@@ -180,8 +180,7 @@ import order from '@/views/order/index.js';
 
 Vue.use(order);
 ```
-
-#### ❤️ Icon 组件
+## 🔨 Usage Icon 组件
 
 > - icon 目录参考目录建议
 > - js 目录中放入 Iconfont Symbol 代码
