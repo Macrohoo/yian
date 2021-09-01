@@ -6,7 +6,7 @@
     :width="`${width}px`"
     :top="top"
     center>
-    <component ref="cpo" :is="content"></component>
+    <component ref="cpo" :is="content" v-model="value"></component>
     <span slot="footer" class="dialog-footer" v-if="!hide_footer">
       <el-button @click="handleClosed" v-if="!hide_cancel">取 消</el-button>
       <el-button type="primary" @click="handleOk">{{sure_btn}}</el-button>
@@ -44,7 +44,7 @@ export default {
     content: {
       type: [Object, Function]
     },
-    value: [Array, Object, Number, String]
+    value: [Object, Number, String]
   },
   data() {
     return {

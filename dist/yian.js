@@ -1082,7 +1082,17 @@ var Modalvue_type_template_id_d0bf2cc4_scoped_true_render = function() {
       }
     },
     [
-      _c(_vm.content, { ref: "cpo", tag: "component" }),
+      _c(_vm.content, {
+        ref: "cpo",
+        tag: "component",
+        model: {
+          value: _vm.value,
+          callback: function($$v) {
+            _vm.value = $$v
+          },
+          expression: "value"
+        }
+      }),
       _vm._v(" "),
       !_vm.hide_footer
         ? _c(
@@ -1168,7 +1178,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     content: {
       type: [Object, Function]
     },
-    value: [Array, Object, Number, String]
+    value: [Object, Number, String]
   },
   data: function data() {
     return {
@@ -1305,6 +1315,7 @@ var directives = {
             var domDiv = vm.$root.$el.appendChild(instance.$el); // Dom element after successful mounting
             // Monitor Remove Vue.property.$watch
 
+            console.log(value);
             instance.$watch('visible', function () {
               instance.visible = false;
               vm.$root.$el.removeChild(domDiv);
@@ -1382,7 +1393,6 @@ var buildUniqueUrl = function buildUniqueUrl(url, method) {
   };
 
   url += "?".concat(paramStr(params), "&").concat(paramStr(data), "&").concat(method);
-  console.log(url);
   return url;
 }; // 防止重复请求
 

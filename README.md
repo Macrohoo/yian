@@ -118,6 +118,8 @@ export default {
 
 <script>
   export default {
+    //props处须写成这样才能传入值
+    props: ['value'],
     methods: {
       //affirm事件必须写上，此方法已与确认按钮耦合。
       //handleClosed方法控制el-dialog窗口关闭

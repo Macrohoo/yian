@@ -44,6 +44,7 @@ const directives = {
             });
             const domDiv = vm.$root.$el.appendChild(instance.$el); // Dom element after successful mounting
             // Monitor Remove Vue.property.$watch
+            console.log(value);
             instance.$watch('visible', () => {
               instance.visible = false;
               vm.$root.$el.removeChild(domDiv);

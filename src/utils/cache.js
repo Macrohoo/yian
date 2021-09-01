@@ -31,7 +31,6 @@ const buildUniqueUrl = (url, method, params = {}, data = {}) => {
     return JSON.stringify(obj);
   };
   url += `?${paramStr(params)}&${paramStr(data)}&${method}`;
-  console.log(url);
   return url;
 };
 
