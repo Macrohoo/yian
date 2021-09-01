@@ -22,7 +22,7 @@ class youstructor {
         ...data,
         adapter: cache({
           time: 10000
-        })        
+        })
       }).then(res => {
         resolve(res);
       }).catch(err => {

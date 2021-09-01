@@ -56,11 +56,11 @@ export default {
     handleClosed() {
       this.visible = false;
     },
-    async handleOk(e) {
+    async handleOk() {
       this.affirm = true;
       try {
         await this.$refs.cpo.affirm(this);
-        // 这里想一下到底是是在这个模型中去关闭这个窗口，还是交给子component中
+        // 关闭窗口交给子component
       } catch (error) {
         console.error('affirm事件不存在[Please define affirm event in the component]!', error);
       }

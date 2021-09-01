@@ -1180,7 +1180,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     handleClosed: function handleClosed() {
       this.visible = false;
     },
-    handleOk: function handleOk(e) {
+    handleOk: function handleOk() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -1263,26 +1263,26 @@ var directives = {
 
         var title = (_el$getAttribute2 = el.getAttribute('title')) !== null && _el$getAttribute2 !== void 0 ? _el$getAttribute2 : '操作窗口'; // 获取窗口标题
 
-        var hide_footer = (_el$getAttribute3 = el.getAttribute('hide_footer')) !== null && _el$getAttribute3 !== void 0 ? _el$getAttribute3 : false; // 是否开启底部
+        var hide_footer = (_el$getAttribute3 = el.getAttribute('hide_footer')) !== null && _el$getAttribute3 !== void 0 ? _el$getAttribute3 : false; // 是否取消底部
 
-        var hide_cancel = (_el$getAttribute4 = el.getAttribute('hide_cancel')) !== null && _el$getAttribute4 !== void 0 ? _el$getAttribute4 : false; // 是否开启底部取消按钮
+        var hide_cancel = (_el$getAttribute4 = el.getAttribute('hide_cancel')) !== null && _el$getAttribute4 !== void 0 ? _el$getAttribute4 : false; // 是否取消底部取消按钮
 
         var sure_btn = (_el$getAttribute5 = el.getAttribute('sure_btn')) !== null && _el$getAttribute5 !== void 0 ? _el$getAttribute5 : '确定'; // 确认按钮文案
 
         var width = (_el$getAttribute6 = el.getAttribute('width')) !== null && _el$getAttribute6 !== void 0 ? _el$getAttribute6 : 730; // 设置宽度
 
-        var top = (_el$getAttribute7 = el.getAttribute('top')) !== null && _el$getAttribute7 !== void 0 ? _el$getAttribute7 : '15vh'; // 设置宽度
+        var top = (_el$getAttribute7 = el.getAttribute('top')) !== null && _el$getAttribute7 !== void 0 ? _el$getAttribute7 : '15vh'; // 设置距顶高度
 
         var main_modules = el.getAttribute('module'); // 获取组件隶属主模块名称
 
         var popup = utils.getShift(binding.modifiers); // 获取指令的修饰符 v-popup.orderShipping中的orderShipping
 
         var vm = vnode.context; // vnode的父组件，即渲染这个template模板的上下文对象实例
-        // 判断主指令是否存在
+        // Determine whether the main instruction exists
 
         if (popup && main_modules) {
-          var content = yian.component(main_modules, popup); // 这个方法在这里是起到取出组件对象的作用（组件已经是一个compiled的对象）
-          // 判断popup组件的子组件component是否被注册
+          var content = yian.component(main_modules, popup); // 这个方法起到取出组件对象的作用（组件已经是一个compiled的对象）
+          // Determine whether the subcomponent of the popup component is registered
 
           if (content) {
             var visible = true;
@@ -1302,16 +1302,15 @@ var directives = {
             }, {
               route: vm.$route
             });
-            var domDiv = vm.$root.$el.appendChild(instance.$el); // 挂载成功后的Dom元素
-
-            console.log(value); // 监听 移除 Vue.property.$watch
+            var domDiv = vm.$root.$el.appendChild(instance.$el); // Dom element after successful mounting
+            // Monitor Remove Vue.property.$watch
 
             instance.$watch('visible', function () {
               instance.visible = false;
               vm.$root.$el.removeChild(domDiv);
 
               if (instance.affirm) {
-                vm.reload ? vm.reload() : false; // 如果渲染template模板的上下文对象路由需要重载
+                vm.reload ? vm.reload() : false; // If the context object routing for rendering template template needs to be overloaded
 
                 vm[action] ? vm[action].apply(vm, [keys, value]) : false;
               }
