@@ -33,15 +33,16 @@ export default class api {
   send(data) {
     return new Promise((resolve, reject) => {
       const key = Object.keys(data);
-      const action = key[0] || 'defaulter';
-      this.basics = extend[action] || extend.defaulter; // defaulter是一般请求引入，还有video等需要特殊引入
+      const action = key[0] ?? 'defaulter'; //拿到第一个方法名
+      this.basics = extend[action] ?? extend.defaulter; // defaulter是一般请求引入，还有video等需要特殊引入
       this.beforeEach(data).then(value => {
         if (value) {
           const options = {
             url: value.url,
             params: value.data,
             qc: value.options,
-            method: value.method
+            method: value.method,
+            headers: value.headers
           };
           this.request(options).then(res => {
             resolve(res);
@@ -61,12 +62,11 @@ export default class api {
    * axios外侧第一层封装请求体，设置成实例方法，为了content定制interceptor
    * @param {Object} options [url请求地址, params请求body或者请求主query, qc配置信息{loading加载是否开启}, method请求方式]
    */
+  //定义在类的原型上，所以46行代码处可以直接用this访问到
   request(options) {
-    const {
-      url, params, qc = { loading: false }, method
-    } = options;
+    const {url, params, qc = { loading: false }, method, headers} = options;
     let loadingInstance;
-    if (qc.loading && method.toLowerCase() === 'get') {
+    if (qc.loading && method.toLowerCase() !== 'get') {
       loadingInstance = Loading.service({
         fullscreen: true,
         text: '努力加载中...',
@@ -76,14 +76,15 @@ export default class api {
     }
     return new Promise((resolve, reject) => {
       let data;
-      if (method.toLowerCase() === 'get') data = { params };
-      if (method.toLowerCase() === 'post') data = { data: params };
+      if (method === 'get') data = { params };
+      if (method === 'post' || method === 'put' || method === 'delete') data = { data: params };
       this.youstructor.interceptor({
         url,
         method,
         ...data,
+        headers,
         adapter: cache({
-          time: 10000
+          time: 1000
         })
       }).then(res => {
         resolve(res);
@@ -91,7 +92,7 @@ export default class api {
         console.log(err);
         reject(err);
       }).finally(() => {
-        if (method.toLowerCase() === 'get') {
+        if (method.toLowerCase() !== 'get' && loadingInstance) {
           loadingInstance.close();
         }
       });

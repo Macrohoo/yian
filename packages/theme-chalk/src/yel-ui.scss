@@ -1,0 +1,146 @@
+/* el-tabs重制 */
+.yael-tabs {
+  .el-tabs__header {
+    border-bottom: 0px;
+    margin: 0 0 0 14px;
+    .el-tabs__nav {
+      border: 0px;
+    }
+    .el-tabs__item {
+      border-left: 0px;
+      &:hover {
+        color: #623ceb;
+      }
+    }
+    .el-tabs__item.is-active {
+      color: #623ceb;
+      background: white;
+      border-radius: 16px 16px 0 0;
+      border: 1px solid #e4e7ed;
+    }
+  }
+}
+
+/* el-dialog重制 */
+.yael-dialog {
+  .el-dialog {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    background-clip: padding-box;
+    outline: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    .el-dialog__header {
+      text-align: center;
+      padding: 32px 0 32px 0;
+      .el-dialog__title {
+        font-size: 18px;
+        font-family: Microsoft YaHei;
+        color: #000000;
+        line-height: 18px;
+        opacity: 0.85;
+      }
+      .el-dialog__headerbtn {
+        right: -22px;
+        top: -4px;
+
+        .el-dialog__close {
+          color: #fff;
+          font-size: 18px;
+          font-weight: 800;
+        }
+      }
+    }
+    .el-dialog__body {
+      padding: 0;
+      color: #606266;
+      font-size: 14px;
+      word-break: break-all;
+    }
+    .el-dialog__footer {
+      text-align: center;
+      padding: 20px 20px 20px;
+      .el-button--primary {
+        background-color: #623ceb;
+        border-color: #623ceb;
+      }
+    }
+  }
+}
+
+/* el-button按钮的重制 配合small使用 */
+.yael-button {
+  background-color: #eeedff;
+  border-color: #623ceb;
+  color: #623ceb;
+  &:hover,
+  &:focus {
+    background-color: #623ceb;
+    border-color: #623ceb;
+    color: #fff;
+  }
+}
+
+/* popover样式重置 */
+.el-popover {
+  padding: 2px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.el-checkbox {
+  font-weight: 900;
+}
+
+/* label原始定制样式 */
+.ya-label {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  span {
+    color: #606266;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    width: 80px;
+    text-align: center;
+  }
+}
+
+.ya-select {
+  display: none;       /* visibility: hidden;  隐藏选择框，但仍占据块 */
+  + div {
+    /* 选择框input隔壁就是主图块 */
+    position: relative;
+    margin: 0px 6px;
+    .icon {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 99;
+      opacity: 0;
+    }
+  }
+  &:checked + div {
+    /* 根据ya-select被选中后隔壁的div样式改变被选中的状态 */
+    background: rgba(98, 60, 235, 0.05);
+    border: 1px solid #623ceb;
+    border-radius: 3px;
+    .icon {
+      opacity: 1 !important;
+    }
+  }
+}
+
+/* cascader-panel定制样式 */
+.yael-cascader {
+  overflow: auto;
+  .el-cascader-menu__wrap {
+    border-right: 1px solid #e4e7ed;
+  }
+}
+
+

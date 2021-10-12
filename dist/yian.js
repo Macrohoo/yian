@@ -11,6 +11,36 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ 568:
+/***/ ((module) => {
+
+"use strict";
+function _extends(){return _extends=Object.assign||function(a){for(var b,c=1;c<arguments.length;c++)for(var d in b=arguments[c],b)Object.prototype.hasOwnProperty.call(b,d)&&(a[d]=b[d]);return a},_extends.apply(this,arguments)}var normalMerge=["attrs","props","domProps"],toArrayMerge=["class","style","directives"],functionalMerge=["on","nativeOn"],mergeJsxProps=function(a){return a.reduce(function(c,a){for(var b in a)if(!c[b])c[b]=a[b];else if(-1!==normalMerge.indexOf(b))c[b]=_extends({},c[b],a[b]);else if(-1!==toArrayMerge.indexOf(b)){var d=c[b]instanceof Array?c[b]:[c[b]],e=a[b]instanceof Array?a[b]:[a[b]];c[b]=d.concat(e)}else if(-1!==functionalMerge.indexOf(b)){for(var f in a[b])if(c[b][f]){var g=c[b][f]instanceof Array?c[b][f]:[c[b][f]],h=a[b][f]instanceof Array?a[b][f]:[a[b][f]];c[b][f]=g.concat(h)}else c[b][f]=a[b][f];}else if("hook"==b)for(var i in a[b])c[b][i]=c[b][i]?mergeFn(c[b][i],a[b][i]):a[b][i];else c[b]=a[b];return c},{})},mergeFn=function(a,b){return function(){a&&a.apply(this,arguments),b&&b.apply(this,arguments)}};module.exports=mergeJsxProps;
+
+
+/***/ }),
+
+/***/ 34:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(645);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".videoFrame{background:rgba(0,0,0,.2);z-index:99;position:absolute;top:0}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ 99:
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -123,6 +153,24 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
+
+/***/ }),
+
+/***/ 917:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(34);
+if(content.__esModule) content = content.default;
+if(typeof content === 'string') content = [[module.id, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(346)/* .default */ .Z
+var update = add("2dd2ead8", content, false, {});
+// Hot Module Replacement
+if(false) {}
 
 /***/ }),
 
@@ -536,7 +584,8 @@ __webpack_require__.d(__webpack_exports__, {
 var apiextend_namespaceObject = {};
 __webpack_require__.r(apiextend_namespaceObject);
 __webpack_require__.d(apiextend_namespaceObject, {
-  "defaulter": () => (defaulter)
+  "defaulter": () => (defaulter),
+  "uploadFormData": () => (uploadFormData)
 });
 
 ;// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/components/icon/index.vue?vue&type=template&id=69a58868&scoped=true&
@@ -1069,7 +1118,7 @@ var Modalvue_type_template_id_d0bf2cc4_scoped_true_render = function() {
     {
       staticClass: "Ya-dialog",
       attrs: {
-        title: "title",
+        title: _vm.title,
         visible: _vm.visible,
         width: _vm.width + "px",
         top: _vm.top,
@@ -1334,19 +1383,520 @@ var directives = {
         }
       });
     },
-    // 需要考虑到vnode更新的情况(这种是vnode更新，但是组件并没有销毁重建的情况，那我们需要去触发这个钩子来对sote中的数据进行重新赋值)
+    // 需要考虑到vnode更新的情况(这种是vnode更新，但是组件并没有销毁重建的情况，那我们需要去触发这个钩子来对store中的数据进行重新赋值)
     update: function update(el, binding, vnode) {
       !utils.empty(binding.value) ? directives.store[vnode.elm.id] = binding.value : delete directives.store[vnode.elm.id];
     }
   }
 };
 /* harmony default export */ const popups = (directives);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-1[0].rules[0].use!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/components/upload/index.vue?vue&type=script&lang=js&
+/* harmony default export */ const uploadvue_type_script_lang_js_ = ({
+  props: {
+    //上传axios操作，保证是一个promise
+    action: {
+      type: Function,
+      "default": function _default() {}
+    },
+    //上传后的回调函数，包括成功和失败
+    afterUpload: {
+      type: Function,
+      "default": function _default() {}
+    },
+    //是否需要截取vedio画面第一帧
+    needCanvas: {
+      type: Boolean,
+      "default": false
+    },
+    //多文件 multiple和needCanvas同时为ture，上传需要分两步走
+    multiple: {
+      type: Boolean,
+      "default": false
+    },
+    //自动上传?
+    autoUpload: {
+      type: Boolean,
+      "default": true
+    },
+    //按钮文字内容
+    btn_words: {
+      type: String,
+      "default": '上传图片'
+    },
+    //按钮大小，支持el系 medium / small / mini 三种大小
+    size: {
+      type: String,
+      "default": 'medium'
+    },
+    //按钮颜色，支持el系 primary / success / warning / danger / info / text
+    color_type: {
+      type: String,
+      "default": 'primary'
+    },
+    fields: {
+      type: Object,
+      "default": null
+    }
+  },
+  data: function data() {
+    return {
+      thumbnails: [],
+      postFiles: [],
+      upload_file: "upload-file-".concat(Math.round(Math.random() * 10000).toString())
+    };
+  },
+  computed: {
+    label_class: function label_class() {
+      if (this.size === 'medium') {
+        return "el-button el-button--".concat(this.color_type);
+      } else if (this.size === 'small') {
+        return "el-button el-button--".concat(this.color_type, " el-button--small");
+      } else if (this.size === 'mini') {
+        return "el-button el-button--".concat(this.color_type, " el-button--mini");
+      } else {
+        return "el-button el-button--".concat(this.color_type);
+      }
+    }
+  },
+  beforeUpdate: function beforeUpdate() {
+    console.log(this.multiple);
+  },
+  methods: {
+    //变动时
+    handleChange: function handleChange(e) {
+      var files = e.target.files;
+      if (!files) return;
+      this.getUploadFiles(files);
+    },
+    //canvas处理vedio
+    canvasDrawVedio: function canvasDrawVedio(postFiles, callfn) {
+      for (var i = 0; i < postFiles.length; i++) {
+        var file = postFiles[i];
+
+        if (/video\/.*/.test(postFiles[i].type)) {
+          var video = document.createElement('video');
+          video.src = URL.createObjectURL(file);
+          console.log(video.src);
+          video.addEventListener('loadeddata', function () {
+            //走一遍video，在1秒处定格画面
+            this.currentTime = 1;
+          });
+          video.addEventListener('seeked', function () {
+            // this.width = this.videoWidth;
+            // this.height = this.videoHeight;
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            canvas.width = 100;
+            canvas.height = 100;
+            ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+            var thumb = canvas.toDataURL('image/jpeg', 0.05);
+            callfn(thumb);
+          });
+        } else {
+          (function () {
+            var reader = new FileReader();
+            var img = new Image();
+
+            reader.onload = function (evt) {
+              img.src = evt.target.result;
+            };
+
+            reader.readAsDataURL(file);
+
+            img.onload = function () {
+              var canvas = document.createElement('canvas');
+              canvas.width = 100;
+              canvas.height = 100;
+              var ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, 100, 100);
+              var thumb = canvas.toDataURL('image/jpeg', 0.1);
+              callfn(thumb);
+            };
+          })();
+        }
+      }
+    },
+    //处理选择的文件
+    getUploadFiles: function getUploadFiles(files) {
+      var postFiles = Array.from(files); //类数组转数组
+      //console.log(postFiles)
+
+      if (!this.multiple) {
+        postFiles = postFiles.slice(0, 1);
+      }
+
+      if (postFiles.length === 0) return;
+      this.upload(postFiles);
+    },
+    //上传操作前的处理
+    upload: function upload(postFiles) {
+      var filesType = []; //不能图片和视频混着传，因为数据库fileds关键字的问题
+
+      for (var i = 0; i < postFiles.length; i++) {
+        if (postFiles[i].size / 1024 / 1024 > 3 && /image\/.*/.test(postFiles[i].type)) {
+          this.$message({
+            message: "".concat(postFiles[i].name, "\u56FE\u7247\u8D85\u8FC7\u4E0A\u4F20\u5927\u5C0F\u9650\u5236\uFF0C\u6700\u59273Mb"),
+            type: 'error',
+            duration: 5 * 1000
+          });
+          this.$refs.fileInput.value = null;
+          return;
+        } else if (postFiles[i].size / 1024 / 1024 > 50 && /video\/.*/.test(postFiles[i].type)) {
+          this.$message({
+            message: "".concat(postFiles[i].name, "\u89C6\u9891\u8D85\u8FC7\u4E0A\u4F20\u5927\u5C0F\u9650\u5236\uFF0C\u6700\u592750Mb"),
+            type: 'error',
+            duration: 5 * 1000
+          });
+          this.$refs.fileInput.value = null;
+          return;
+        } else {
+          filesType.push(postFiles[i].type);
+        }
+      }
+
+      var reg = new RegExp("".concat(filesType[0].slice(0, 3), ".*"), 'i'); //验证批量上传时是否是同一类型的文件
+
+      var result = filesType.every(function (element) {
+        return reg.test(element);
+      });
+
+      if (result) {
+        this.needCanvas && this.multiple ? this.beforePost(postFiles) : this.autoUpload ? this.post(postFiles) : this.$emit('selectX', postFiles); //非自动上传把postFiles，$emit出来
+      } else {
+        this.$message({
+          message: '批量上传时请上传同一类型的文件!',
+          type: 'error',
+          duration: 5 * 1000
+        });
+        this.$refs.fileInput.value = null;
+        return;
+      }
+    },
+    //数据上传前的前置操作
+    beforePost: function beforePost(postFiles) {
+      var _this = this;
+
+      this.postFiles = postFiles;
+
+      if (/video\/.*/.test(postFiles[0].type) || /image\/.*/.test(postFiles[0].type)) {
+        this.canvasDrawVedio(postFiles, function (thumb) {
+          _this.thumbnails.push(thumb);
+        }); //console.log(this.thumbnails)
+
+        this.$emit('linkBase64', this.thumbnails); //事件监听是__ob__,这里不用担心异步
+      } else {
+        this.$message({
+          message: '非视频、图片类文件无法使用Canvas画图帧!',
+          type: 'error',
+          duration: 5 * 1000
+        });
+      }
+    },
+    //数据正式上传[callback]  且onSuccess[callback]
+    waitPost: function waitPost() {
+      var _this2 = this;
+
+      if (this.postFiles.length === 0) {
+        this.$message({
+          message: '请先批量选择素材，再点击开始上传!',
+          type: 'error',
+          duration: 5 * 1000
+        });
+        return;
+      }
+
+      if (/video\/.*/.test(this.postFiles[0].type) || /image\/.*/.test(this.postFiles[0].type)) {
+        this.action(this.postFiles, this.fields, this.thumbnails).then(function (res) {
+          _this2.afterUpload(res);
+        });
+      } else {
+        this.action(this.postFiles, this.fields).then(function (res) {
+          _this2.afterUpload(res);
+        });
+      }
+    },
+    //数据正式上传[callback]  且onSuccess[callback]
+    post: function post(postFiles) {
+      var _this3 = this;
+
+      if (this.multiple) {
+        this.action(postFiles, this.fields).then(function (res) {
+          _this3.afterUpload(res);
+        });
+      } else {
+        if (this.needCanvas && (/video\/.*/.test(postFiles[0].type) || /image\/.*/.test(postFiles[0].type))) {
+          this.canvasDrawVedio(postFiles, function (thumb) {
+            _this3.action(postFiles, _this3.fields, thumb).then(function (res) {
+              _this3.afterUpload(res);
+            });
+          });
+        } else {
+          this.action(postFiles, this.fields).then(function (res) {
+            _this3.afterUpload(res);
+          });
+        }
+      }
+    }
+  },
+  render: function render(h) {
+    return h("div", [h("label", {
+      "attrs": {
+        "for": this.upload_file
+      },
+      "class": this.label_class
+    }, [this.btn_words]), h("input", {
+      "ref": "fileInput",
+      "attrs": {
+        "type": "file",
+        "id": this.upload_file,
+        "multiple": this.multiple
+      },
+      "style": "display: none",
+      "on": {
+        "change": this.handleChange
+      }
+    }), h("button", {
+      "attrs": {
+        "type": "primary"
+      },
+      "on": {
+        "click": this.waitPost
+      },
+      "class": this.label_class,
+      "directives": [{
+        name: "show",
+        value: this.needCanvas && this.multiple
+      }],
+      "style": "margin-left: 20px"
+    }, ["\u5F00\u59CB\u4E0A\u4F20"])]);
+  }
+});
+;// CONCATENATED MODULE: ./src/components/upload/index.vue?vue&type=script&lang=js&
+ /* harmony default export */ const components_uploadvue_type_script_lang_js_ = (uploadvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./src/components/upload/index.vue
+var upload_render, upload_staticRenderFns
+;
+
+
+
+/* normalize component */
+;
+var upload_component = normalizeComponent(
+  components_uploadvue_type_script_lang_js_,
+  upload_render,
+  upload_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var upload_api; }
+upload_component.options.__file = "src/components/upload/index.vue"
+/* harmony default export */ const upload = (upload_component.exports);
+// EXTERNAL MODULE: ./node_modules/@vue/babel-helper-vue-jsx-merge-props/dist/helper.js
+var helper = __webpack_require__(568);
+var helper_default = /*#__PURE__*/__webpack_require__.n(helper);
+;// CONCATENATED MODULE: ./node_modules/babel-loader/lib/index.js??clonedRuleSet-1[0].rules[0].use!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/components/input/YaCheckbox.vue?vue&type=script&lang=js&
+
+/* harmony default export */ const YaCheckboxvue_type_script_lang_js_ = ({
+  props: {
+    //主盒子宽度，不含label的上下
+    width: {
+      type: Number,
+      "default": 84
+    },
+    //主盒子高度，不含label的上下
+    height: {
+      type: Number,
+      "default": 84
+    },
+    //链接图宽度
+    srcWidth: {
+      type: Number,
+      "default": 64
+    },
+    //链接图长度
+    srcHeight: {
+      type: Number,
+      "default": 64
+    },
+    //选择内容与<input>双向绑定
+    selectData: {
+      type: [Array, Object]
+    },
+    //指定<input>元素value的值
+    options: {
+      type: Object
+    },
+    linkSrc: {
+      type: String,
+      "default": 'https://kodo.mboke.top/le-icon-folder.png'
+    }
+  },
+  data: function data() {
+    return {
+      hoverKey: false
+    };
+  },
+  computed: {
+    //resolve props one-way streaming
+    selectVal: {
+      get: function get() {
+        return this.selectData;
+      },
+      set: function set(val) {
+        this.$emit('selectX', val);
+      }
+    }
+  },
+  methods: {
+    hoverChange: function hoverChange() {
+      this.hoverKey ? this.hoverKey = false : this.hoverKey = true;
+    }
+  },
+  render: function render(h) {
+    var _this = this;
+
+    var width = this.width,
+        height = this.height,
+        srcWidth = this.srcWidth,
+        srcHeight = this.srcHeight,
+        options = this.options,
+        linkSrc = this.linkSrc;
+    var linkImgStyle;
+    this.hoverKey ? linkImgStyle = {
+      width: "".concat(srcWidth + 4, "px"),
+      height: "".concat(srcHeight + 4, "px"),
+      borderRadius: '6px'
+    } : linkImgStyle = {
+      width: "".concat(srcWidth, "px"),
+      height: "".concat(srcHeight, "px"),
+      borderRadius: '6px'
+    };
+    return h("label", {
+      "class": "ya-label",
+      "style": {
+        width: "".concat(width + 12, "px"),
+        height: "".concat(height, "px")
+      }
+    }, [h("input", helper_default()([{
+      "on": {
+        "change": function change($event) {
+          var $$a = _this.selectVal,
+              $$el = $event.target,
+              $$c = $$el.checked ? true : false;
+
+          if (Array.isArray($$a)) {
+            var $$v = options,
+                $$i = _this._i($$a, $$v);
+
+            if ($$el.checked) {
+              $$i < 0 && (_this.selectVal = $$a.concat([$$v]));
+            } else {
+              $$i > -1 && (_this.selectVal = $$a.slice(0, $$i).concat($$a.slice($$i + 1)));
+            }
+          } else {
+            _this.selectVal = $$c;
+          }
+        }
+      },
+      "attrs": {
+        "type": "checkbox"
+      },
+      "class": "ya-select",
+      "domProps": {
+        "checked": Array.isArray(_this.selectVal) ? this._i(_this.selectVal, options) > -1 : _this.selectVal
+      }
+    }, {
+      directives: [{
+        name: "model",
+        value: _this.selectVal,
+        modifiers: {}
+      }]
+    }])), h("div", {
+      "class": "flex flex-direction justify-center align-center",
+      "style": {
+        width: "".concat(width, "px"),
+        height: "".concat(height, "px")
+      }
+    }, [h("svg-icon", {
+      "attrs": {
+        "icon-class": "ziluobu"
+      },
+      "class": "icon"
+    }), h("div", {
+      "style": "position: relative"
+    }, [h("img", {
+      "class": "videoFrame",
+      "directives": [{
+        name: "show",
+        value: linkSrc.length > 200
+      }],
+      "style": linkImgStyle,
+      "attrs": {
+        "src": "https://kodo.mboke.top/svgVideo.svg"
+      },
+      "on": {
+        "mouseenter": this.hoverChange.bind(this),
+        "mouseleave": this.hoverChange.bind(this)
+      }
+    }), h("img", {
+      "style": linkImgStyle,
+      "attrs": {
+        "src": linkSrc
+      },
+      "on": {
+        "mouseenter": this.hoverChange.bind(this),
+        "mouseleave": this.hoverChange.bind(this)
+      }
+    })]), h("span", [options.name]), h("span", [options.title])])]);
+  }
+});
+;// CONCATENATED MODULE: ./src/components/input/YaCheckbox.vue?vue&type=script&lang=js&
+ /* harmony default export */ const input_YaCheckboxvue_type_script_lang_js_ = (YaCheckboxvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./src/components/input/YaCheckbox.vue?vue&type=style&index=0&lang=scss&
+var YaCheckboxvue_type_style_index_0_lang_scss_ = __webpack_require__(917);
+;// CONCATENATED MODULE: ./src/components/input/YaCheckbox.vue?vue&type=style&index=0&lang=scss&
+
+;// CONCATENATED MODULE: ./src/components/input/YaCheckbox.vue
+var YaCheckbox_render, YaCheckbox_staticRenderFns
+;
+
+;
+
+
+/* normalize component */
+
+var YaCheckbox_component = normalizeComponent(
+  input_YaCheckboxvue_type_script_lang_js_,
+  YaCheckbox_render,
+  YaCheckbox_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var YaCheckbox_api; }
+YaCheckbox_component.options.__file = "src/components/input/YaCheckbox.vue"
+/* harmony default export */ const YaCheckbox = (YaCheckbox_component.exports);
 ;// CONCATENATED MODULE: ./src/install.js
+
+
 
 
 function install(Vue) {
   Vue.directive('popup', popups.popup);
-  Vue.component('svg-icon', icon); // icon全局注册移入这个封装入口
+  Vue.component('svg-icon', icon); // icon全局注册组件
+
+  Vue.component('ya-upload', upload); //上传组件
+
+  Vue.component('ya-checkbox', YaCheckbox);
 }
 // EXTERNAL MODULE: external {"root":"Axios","commonjs":"axios","commonjs2":"axios","amd":"axios"}
 var external_root_Axios_commonjs_axios_commonjs2_axios_amd_axios_ = __webpack_require__(529);
@@ -1470,6 +2020,8 @@ var buildUniqueUrl = function buildUniqueUrl(url, method) {
 // adapter: function (config) {
 //   /* ... */
 // }
+// EXTERNAL MODULE: external {"root":"Element-UI","commonjs":"element-ui","commonjs2":"element-ui","amd":"element-ui"}
+var external_root_Element_UI_commonjs_element_ui_commonjs2_element_ui_amd_element_ui_ = __webpack_require__(142);
 ;// CONCATENATED MODULE: ./src/utils/yonstructor.js
 function yonstructor_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -1486,6 +2038,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
+
 var youstructor = /*#__PURE__*/function () {
   // Core structure
   function youstructor(config, self) {
@@ -1495,6 +2048,7 @@ var youstructor = /*#__PURE__*/function () {
     this.utils = utils;
     this.ElementUILoading = config.ElementUILoading;
     this.interceptor = config.service;
+    this.baseVersionApi = config.baseVersionApi;
   }
 
   _createClass(youstructor, [{
@@ -1504,13 +2058,28 @@ var youstructor = /*#__PURE__*/function () {
 
       var url = options.url,
           params = options.params,
-          method = options.method;
+          method = options.method,
+          _options$headers = options.headers,
+          headers = _options$headers === void 0 ? {
+        'content-type': 'application/json'
+      } : _options$headers;
+      var loadingInstance;
+
+      if (this.ElementUILoading && method.toLowerCase() !== 'get') {
+        loadingInstance = external_root_Element_UI_commonjs_element_ui_commonjs2_element_ui_amd_element_ui_.Loading.service({
+          fullscreen: true,
+          text: '努力加载中...',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+      }
+
       return new Promise(function (resolve, reject) {
         var data = {};
-        if (method.toLowerCase() === 'get') data = {
+        if (method === 'get') data = {
           params: params
         };
-        if (method.toLowerCase() === 'post') data = {
+        if (method === 'post' || method === 'put' || method === 'delete') data = {
           data: params
         };
 
@@ -1518,14 +2087,19 @@ var youstructor = /*#__PURE__*/function () {
           url: url,
           method: method
         }, data), {}, {
+          headers: headers,
           adapter: utils_cache({
-            time: 10000
+            time: 1000
           })
         })).then(function (res) {
           resolve(res);
         })["catch"](function (err) {
           console.log(err);
           reject(err);
+        })["finally"](function () {
+          if (method.toLowerCase() !== 'get' && loadingInstance) {
+            loadingInstance.close();
+          }
         });
       });
     }
@@ -1535,62 +2109,213 @@ var youstructor = /*#__PURE__*/function () {
 }();
 
 /* harmony default export */ const yonstructor = (youstructor);
-// EXTERNAL MODULE: external {"root":"Element-UI","commonjs":"element-ui","commonjs2":"element-ui","amd":"element-ui"}
-var external_root_Element_UI_commonjs_element_ui_commonjs2_element_ui_amd_element_ui_ = __webpack_require__(142);
 ;// CONCATENATED MODULE: ./src/utils/apiextend.js
 var defaulter = {
   // 前置操作
 
   /**
-   *
+   * 前置操作处理整合请求参数
    * @param {Object} value [Proxy代理的property]
    * @param {Function} resolve
    * @param {Function} reject
    * @param {Object} config
    */
   beforeEach: function beforeEach(value, resolve, reject, config) {
+    var _value$page;
+
     var url;
     var method;
     var data;
     var options;
     var keys;
     var argument;
-    keys = Object.keys(value);
-    argument = value[keys[0]]; // 第一个方法中的参数
+    var headers;
+    keys = Object.keys(value); //目前设计只会有两个keys，一个是请求关键url部分，一个是page
 
-    url = "/".concat(keys[0], "/").concat(argument[1].behavior);
-    method = argument[0].toLowerCase();
     options = {
       loading: config.ElementUILoading
     };
+    argument = value[keys[0]]; // 第一个方法中的参数最多5个，最先是请求方式，然后是id [{id: '12,13'}]，其次是include，再次是bahavior [{behavior: 'batch'}]，最后是主body或者主query
 
-    if (argument[2]) {
-      // 当主body对象存在时
-      data = argument[2];
+    method = argument[0].toLowerCase();
+    var page = (_value$page = value['page']) !== null && _value$page !== void 0 ? _value$page : null; //page({ currentPage: 1, pageSize: 10 })
 
-      if (keys.length > 1 && keys[1] == 'page') {
-        Object.assign(data, value[keys[1]][0]);
-      }
+    url = "/".concat(config.baseVersionApi, "/").concat(keys[0]); //基底请求url构建好
 
-      if (keys.length > 2) {
-        reject('请检查你的方法!');
-      }
-    } else {
-      // 当主body对象不存在时
-      if (keys.length > 1 && keys[1] == 'page') {
-        // debugger
-        data = value[keys[1]][0];
-      }
+    headers = {
+      'content-type': 'application/json'
+    };
 
-      if (keys.length > 2) {
-        reject('请检查你的方法!');
-      }
+    switch (method) {
+      case 'post':
+        if (Object.keys(argument).length === 2) {
+          //当只有2个参数时
+          data = argument[1];
+
+          if (page) {
+            Object.assign(data, page[0]);
+          }
+        } else if (Object.keys(argument).length === 3) {
+          //当有3个参数时
+          if (argument[1].include) {
+            url += "?include=".concat(argument[1].include);
+          } else {
+            url += "?behavior=".concat(argument[1].behavior);
+          }
+
+          data = argument[2];
+
+          if (page) {
+            Object.assign(data, page[0]);
+          }
+        } else if (Object.keys(argument).length === 4) {
+          //当有4个参数时
+          url += "?include=".concat(argument[1].include, "&behavior=").concat(argument[2].behavior);
+          data = argument[3];
+
+          if (page) {
+            Object.assign(data, page[0]);
+          }
+        } else {
+          reject('请检查yian请求写法!');
+        }
+
+        break;
+
+      case 'get':
+        if (Object.keys(argument).length === 1) {
+          //当只有1个参数时
+          if (page) {
+            data = page[0];
+          }
+        } else if (Object.keys(argument).length === 2) {
+          //当2个参数时
+          if (argument[1].id) {
+            url += "/".concat(argument[1].id);
+          } else {
+            argument[1].include ? url += "?include=".concat(argument[1].include) : url += "?behavior=".concat(argument[1].behavior);
+          }
+
+          if (page) {
+            data = page[0];
+          }
+        } else if (Object.keys(argument).length === 3) {
+          //当3个参数时
+          if (argument[1].id) {
+            argument[2].include ? url += "/".concat(argument[1].id, "?include=").concat(argument[2].include) : url += "/".concat(argument[1].id, "?behavior=").concat(argument[2].behavior);
+          } else {
+            url += "?include=".concat(argument[1].include, "&behavior=").concat(argument[2].behavior);
+          }
+
+          if (page) {
+            data = page[0];
+          }
+        } else if (Object.keys(argument).length === 4) {
+          url += "/".concat(argument[1].id, "?include=").concat(argument[2].include, "&behavior=").concat(argument[3].behavior);
+
+          if (page) {
+            data = page[0];
+          }
+        } else {
+          reject('请检查yian请求写法!');
+        }
+
+        break;
+
+      case 'put':
+        if (Object.keys(argument).length === 3) {
+          //当3个参数时
+          url += "/".concat(argument[1].id);
+          data = argument[2];
+        }
+
+        if (Object.keys(argument).length === 4) {
+          //当4个参数时
+          argument[2].include ? url += "/".concat(argument[1].id, "?include=").concat(argument[2].include) : url += "/".concat(argument[1].id, "?behavior=").concat(argument[2].behavior);
+          data = argument[3];
+        } else if (Object.keys(argument).length === 5) {
+          //当5个参数时
+          url += "/".concat(argument[1].id, "?include=").concat(argument[2].include, "&behavior=").concat(argument[3].behavior);
+          data = argument[4];
+        } else {
+          reject('请检查yian请求写法!');
+        }
+
+        break;
+
+      case 'delete':
+        //delete方式中id是肯定存在的
+        if (Object.keys(argument).length === 2) {
+          //当2个参数时
+          url += "/".concat(argument[1].id);
+        } else if (Object.keys(argument).length === 3) {
+          //当3个参数时
+          if (argument[2].include) {
+            url += "/".concat(argument[1].id, "?include=").concat(argument[2].include);
+          } else {
+            if (argument[2].behavior) {
+              url += "/".concat(argument[1].id, "?behavior=").concat(argument[2].behavior);
+            } else {
+              url += "/".concat(argument[1].id);
+              data = argument[2];
+            }
+          }
+        } else if (Object.keys(argument).length === 4) {
+          //当4个参数时
+          if (argument[2].include) {
+            if (argument[3].behavior) {
+              url += "/".concat(argument[1].id, "?include=").concat(argument[2].include, "&behavior=").concat(argument[3].behavior);
+            } else {
+              url += "/".concat(argument[1].id, "?include=").concat(argument[2].include);
+              data = argument[3];
+            }
+          } else {
+            url += "/".concat(argument[1].id, "?behavior=").concat(argument[2].behavior);
+            data = argument[3];
+          }
+        } else if (Object.keys(argument).length === 5) {
+          //当5个参数时
+          url += "/".concat(argument[1].id, "?include=").concat(argument[2].include, "&behavior=").concat(argument[3].behavior);
+          data = argument[4];
+        } else {
+          reject('请检查yian请求写法!');
+        }
+
+        break;
+
+      default:
+        reject('请注意请求方式!');
+        break;
     }
 
     resolve({
       url: url,
       method: method,
       data: data,
+      options: options,
+      headers: headers
+    });
+  }
+};
+var uploadFormData = {
+  beforeEach: function beforeEach(value, resolve, reject, config) {
+    var options;
+    var keys;
+    var argument;
+    keys = Object.keys(value); // 只有一个key
+
+    options = {
+      loading: config.ElementUILoading
+    };
+    argument = value[keys[0]]; //第一个是字符串表示请求url, 第二个是请求方法, 第三个是主body
+
+    resolve({
+      url: "/".concat(config.baseVersionApi, "/").concat(argument[0]),
+      method: argument[1].toLowerCase(),
+      headers: {
+        'content-type': 'multipart/form-data'
+      },
+      data: argument[2],
       options: options
     });
   }
@@ -1654,9 +2379,12 @@ var api_api = /*#__PURE__*/function () {
       var _this2 = this;
 
       return new Promise(function (resolve, reject) {
+        var _key$, _extend$action;
+
         var key = Object.keys(data);
-        var action = key[0] || 'defaulter';
-        _this2.basics = apiextend_namespaceObject[action] || defaulter; // defaulter是一般请求引入，还有video等需要特殊引入
+        var action = (_key$ = key[0]) !== null && _key$ !== void 0 ? _key$ : 'defaulter'; //拿到第一个方法名
+
+        _this2.basics = (_extend$action = apiextend_namespaceObject[action]) !== null && _extend$action !== void 0 ? _extend$action : defaulter; // defaulter是一般请求引入，还有video等需要特殊引入
 
         _this2.beforeEach(data).then(function (value) {
           if (value) {
@@ -1664,7 +2392,8 @@ var api_api = /*#__PURE__*/function () {
               url: value.url,
               params: value.data,
               qc: value.options,
-              method: value.method
+              method: value.method,
+              headers: value.headers
             };
 
             _this2.request(options).then(function (res) {
@@ -1684,6 +2413,7 @@ var api_api = /*#__PURE__*/function () {
      * axios外侧第一层封装请求体，设置成实例方法，为了content定制interceptor
      * @param {Object} options [url请求地址, params请求body或者请求主query, qc配置信息{loading加载是否开启}, method请求方式]
      */
+    //定义在类的原型上，所以46行代码处可以直接用this访问到
 
   }, {
     key: "request",
@@ -1696,10 +2426,11 @@ var api_api = /*#__PURE__*/function () {
           qc = _options$qc === void 0 ? {
         loading: false
       } : _options$qc,
-          method = options.method;
+          method = options.method,
+          headers = options.headers;
       var loadingInstance;
 
-      if (qc.loading && method.toLowerCase() === 'get') {
+      if (qc.loading && method.toLowerCase() !== 'get') {
         loadingInstance = external_root_Element_UI_commonjs_element_ui_commonjs2_element_ui_amd_element_ui_.Loading.service({
           fullscreen: true,
           text: '努力加载中...',
@@ -1710,10 +2441,10 @@ var api_api = /*#__PURE__*/function () {
 
       return new Promise(function (resolve, reject) {
         var data;
-        if (method.toLowerCase() === 'get') data = {
+        if (method === 'get') data = {
           params: params
         };
-        if (method.toLowerCase() === 'post') data = {
+        if (method === 'post' || method === 'put' || method === 'delete') data = {
           data: params
         };
 
@@ -1721,8 +2452,9 @@ var api_api = /*#__PURE__*/function () {
           url: url,
           method: method
         }, data), {}, {
+          headers: headers,
           adapter: utils_cache({
-            time: 10000
+            time: 1000
           })
         })).then(function (res) {
           resolve(res);
@@ -1730,7 +2462,7 @@ var api_api = /*#__PURE__*/function () {
           console.log(err);
           reject(err);
         })["finally"](function () {
-          if (method.toLowerCase() === 'get') {
+          if (method.toLowerCase() !== 'get' && loadingInstance) {
             loadingInstance.close();
           }
         });
@@ -1787,18 +2519,29 @@ var yian = /*#__PURE__*/function () {
     value: function get_proxy(config) {
       var _Proxy = new Proxy(new yonstructor(config, this), {
         _validator: {},
+        _upload: false,
         get: function get(target, property, receiver) {
           if (property in target) {
             //the instance attributes of youstructor, such as utils
             return target[property];
           } else {
             if (property == 'then') {
-              //the logic processing of youstructor's request then method
-              var data = utils.copyData(this._validator);
+              var data;
+
+              if (this._upload) {
+                data = this._validator;
+                this._upload = false;
+              } else {
+                //the logic processing of youstructor's request then method
+                data = utils.copyData(this._validator);
+              }
+
               this._validator = {}; //Return the (pre-function) that needs to be processed before the then method
+              //遇到属性then，必须返回一个函数方法，因为需要被then()调用。
+              //！！但then调用后返回的是一个Promise，因为then方法触发返回额函数是一个async函数。不再被代理，因为其他方法proxy代理监听到后返回出的都是当前proxy代理实例
 
               return /*#__PURE__*/function () {
-                var _ref = src_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(argument) {
+                var _ref = src_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(argumentResolve) {
                   var returned, reverse;
                   return regeneratorRuntime.wrap(function _callee$(_context) {
                     while (1) {
@@ -1817,7 +2560,7 @@ var yian = /*#__PURE__*/function () {
 
                         case 3:
                           reverse = _context.sent;
-                          return _context.abrupt("return", argument(reverse));
+                          return _context.abrupt("return", argumentResolve(reverse));
 
                         case 5:
                         case "end":
@@ -1831,15 +2574,16 @@ var yian = /*#__PURE__*/function () {
                   return _ref.apply(this, arguments);
                 };
               }();
-            } else if (property == 'file' || property == 'upload' || property == 'video') {
-              //这里是youstructor的请求方法逻辑处理
-              return false;
             } else {
               var self = this; //此处匿名函数不能使用()=>,会导致内部arguments指向的是上一层
 
+              if (property == 'uploadFormData') {
+                self._upload = true;
+              }
+
               return function () {
                 //This step is the core step of processing all other methods before then, performing a proxy on them, and storing the relevant parameters.
-                self._validator[property] = arguments || ''; //As long as the method is executed, a layer of proxy is returned.
+                self._validator[property] = arguments || ''; //方法只要被执行，就返回出一层代理，因为后续还要继续被代理。
 
                 return _Proxy;
               };
