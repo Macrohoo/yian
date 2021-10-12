@@ -18,6 +18,8 @@
     "@babel/core": "^7.15.0",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.15.0",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
+    "@vue/babel-preset-jsx": "^1.2.4",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
     "eslint": "^7.32.0",
@@ -32,9 +34,5 @@
     "vue-template-compiler": "^2.6.10",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0"
-  },
-  "dependencies": {
-    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
-    "@vue/babel-preset-jsx": "^1.2.4"
   }
 }

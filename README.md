@@ -10,6 +10,7 @@ npm install yian -S
 //main.js
 
 import yian from 'yian';
+import 'yian/packages/theme-chalk/src/yel-ui.scss'
 /* import service from 'your interceptor filepath' */
 
 Vue.use(yian);
