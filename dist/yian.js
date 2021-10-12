@@ -2413,7 +2413,6 @@ var api_api = /*#__PURE__*/function () {
      * axios外侧第一层封装请求体，设置成实例方法，为了content定制interceptor
      * @param {Object} options [url请求地址, params请求body或者请求主query, qc配置信息{loading加载是否开启}, method请求方式]
      */
-    //定义在类的原型上，所以46行代码处可以直接用this访问到
 
   }, {
     key: "request",
@@ -2537,8 +2536,6 @@ var yian = /*#__PURE__*/function () {
               }
 
               this._validator = {}; //Return the (pre-function) that needs to be processed before the then method
-              //遇到属性then，必须返回一个函数方法，因为需要被then()调用。
-              //！！但then调用后返回的是一个Promise，因为then方法触发返回额函数是一个async函数。不再被代理，因为其他方法proxy代理监听到后返回出的都是当前proxy代理实例
 
               return /*#__PURE__*/function () {
                 var _ref = src_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(argumentResolve) {
@@ -2583,8 +2580,7 @@ var yian = /*#__PURE__*/function () {
 
               return function () {
                 //This step is the core step of processing all other methods before then, performing a proxy on them, and storing the relevant parameters.
-                self._validator[property] = arguments || ''; //方法只要被执行，就返回出一层代理，因为后续还要继续被代理。
-
+                self._validator[property] = arguments || '';
                 return _Proxy;
               };
             }
